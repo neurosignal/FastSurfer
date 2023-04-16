@@ -438,8 +438,8 @@ def split_cortex_labels(aparc):
                     aparc[mask] = label_current + 1000
 
     # Quick Fixes for overlapping classes
-    aseg_lh = filters.gaussian_filter(1000 * np.asarray(aparc == 2, dtype=np.float), sigma=3)
-    aseg_rh = filters.gaussian_filter(1000 * np.asarray(aparc == 41, dtype=np.float), sigma=3)
+    aseg_lh = filters.gaussian_filter(1000 * np.asarray(aparc == 2, dtype=np.float64), sigma=3)
+    aseg_rh = filters.gaussian_filter(1000 * np.asarray(aparc == 41, dtype=np.float64), sigma=3)
 
     lh_rh_split = np.argmax(np.concatenate((np.expand_dims(aseg_lh, axis=3), np.expand_dims(aseg_rh, axis=3)), axis=3),
                             axis=3)
